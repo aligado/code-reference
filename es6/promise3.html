@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Promise 学习笔记</title>
+        <script type="text/javascript">
+            window.onload = function() {
+                function pms1() {
+                    return new Promise(function(resolve, reject) {
+                        setTimeout(function() {
+                            console.log('执行任务1');
+                            resolve('执行任务1成功');
+                        }, 1000);
+                    });
+                }
+
+                function pms2() {
+                    return new Promise(function(resolve, reject) {
+                        setTimeout(function() {
+                            console.log('执行任务2');
+                            resolve('执行任务2成功');
+                        }, 2000);
+                    });
+                }
+
+                function pms3() {
+                    return new Promise(function(resolve, reject) {
+                        setTimeout(function() {
+                            console.log('执行任务3');
+                            resolve('执行任务3成功');
+                        }, 3000);
+                    });
+                }
+                Promise.race([pms1(), pms2(), pms3()]).then(function(data) {
+                    console.log(data);   //注意上面的延时时间
+                })
+            }
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
